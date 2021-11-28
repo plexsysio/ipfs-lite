@@ -86,7 +86,6 @@ func SetupLibp2p(
 	finalOpts = append(finalOpts, opts...)
 
 	h, err := libp2p.New(
-		ctx,
 		finalOpts...,
 	)
 	if err != nil {

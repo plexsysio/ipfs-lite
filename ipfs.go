@@ -18,7 +18,7 @@ import (
 	"github.com/ipfs/go-datastore"
 	blockstore "github.com/ipfs/go-ipfs-blockstore"
 	chunker "github.com/ipfs/go-ipfs-chunker"
-	"github.com/ipfs/go-ipfs-exchange-interface"
+	exchange "github.com/ipfs/go-ipfs-exchange-interface"
 	offline "github.com/ipfs/go-ipfs-exchange-offline"
 	provider "github.com/ipfs/go-ipfs-provider"
 	"github.com/ipfs/go-ipfs-provider/queue"
@@ -330,7 +330,7 @@ func (p *Peer) BlockStore() blockstore.Blockstore {
 // HasBlock returns whether a given block is available locally. It is
 // a shorthand for .Blockstore().Has().
 func (p *Peer) HasBlock(c cid.Cid) (bool, error) {
-	return p.BlockStore().Has(c)
+	return p.BlockStore().Has(context.Background(), c)
 }
 
 // Exchange returns the underlying exchange implementation
